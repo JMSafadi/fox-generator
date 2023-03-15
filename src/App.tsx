@@ -12,10 +12,15 @@ function App() {
     url: string
   }
 
-  const [images, setImages] = useState<ImageItems[]>([])
+  const [images, setImages] = useState<ImageItems[]>([
+    {
+      id: generateId(), 
+      url: `https://randomfox.ca/images/${randomNum()}.jpg`
+    }
+  ])
 
   const addNewFox: MouseEventHandler<HTMLButtonElement> = (e) => {
-    
+
     e.preventDefault()
 
     const newFox = {
@@ -23,8 +28,8 @@ function App() {
         url: `https://randomfox.ca/images/${randomNum()}.jpg`
       }
       setImages([
-        newFox,
-        ...images
+        ...images,
+        newFox
       ])
   }
 
