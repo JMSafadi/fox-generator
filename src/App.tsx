@@ -1,16 +1,12 @@
 import { MouseEventHandler, useState } from 'react'
 import './App.css'
-import RandomFox from './components/RandomFox'
+import LazyImage from './components/LazyImage'
 
 const randomNum = () => Math.floor(Math.random() * 123) + 1
 const generateId = () => Math.random().toString(36).substr(2, 9)
 
 function App() {
 
-  interface ImageItems {
-    id: string,
-    url: string
-  }
 
   const [images, setImages] = useState<ImageItems[]>([
     {
@@ -42,7 +38,12 @@ function App() {
         {images.map(({ id, url }) => {
           return (
             <div key={id} className='p-4'>
-              <RandomFox image={url}/>
+              <LazyImage 
+                src={url} 
+                alt='fox' 
+                width='320' 
+                height='auto' 
+                className='mx-auto rounded-md bg-gray-300'/>
             </div>
           );
         })}
